@@ -1,0 +1,17 @@
+Big O Notation (O)
+
+Big O notation, represented as O(f(n)), is used to describe the upper bound of an algorithm's time complexity. It signifies that there exists a constant 'c' such that for all values of 'n' greater than or equal to a certain 'n₀', the algorithm's running time 'f(n)' will never exceed 'c * g(n)'.
+
+Mathematically: 0 ≤ f(n) ≤ c * g(n) for all n ≥ n₀.
+
+Big Omega Notation (Ω)
+
+Big Omega notation, represented as Ω(f(n)), describes the lower bound of an algorithm's time complexity. It indicates that there exists a constant 'c' such that for all values of 'n' greater than or equal to a certain 'n₀', the algorithm's running time 'f(n)' will always be at least 'c * g(n)'.
+
+Mathematically: 0 ≤ c * g(n) ≤ f(n) for all n ≥ n₀.
+
+Big Theta Notation (θ)
+
+Big Theta notation, represented as θ(f(n)), provides both upper and lower bounds for an algorithm's time complexity. It signifies that there exist constants 'c₁' and 'c₂' such that for all values of 'n' greater than or equal to a certain 'n₀', the algorithm's running time 'f(n)' will always be between 'c₁ * g(n)' and 'c₂ * g(n)'.
+
+Mathematically: 0 ≤ c₂ * g(n) ≤ f(n) ≤ c₁ * g(n) for all n ≥ n₀.
