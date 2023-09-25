@@ -1,0 +1,63 @@
+indInsertion(arr, size, element, 100, index);
+
+This line calls the `indInsertion` function with the arguments `arr` (an array), `size` (size of the array), `element` (the element to insert), `100` (capacity of the array), and `index` (the position where the element should be inserted).
+
+#include<stdio.h>
+
+This is a preprocessor directive that includes the necessary header file for input and output operations.
+
+void display(int arr[], int n){
+
+This is a function definition for `display`. It takes an integer array `arr` and an integer `n` (size of the array) as parameters.
+
+    // Code for Traversal
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+Inside `display`, this code prints the elements of the array `arr` using a for loop, separated by spaces, and adds a newline character at the end to format the output.
+
+int indInsertion(int arr[], int size, int element, int capacity, int index){
+
+This is a function definition for `indInsertion`. It takes an integer array `arr`, an integer `size` (current size of the array), an integer `element` (the element to insert), an integer `capacity` (maximum capacity of the array), and an integer `index` (the position where the element should be inserted) as parameters.
+
+    // code for Insertion
+    if(size>=capacity){
+        return -1;
+    }
+
+Inside `indInsertion`, this code checks if the current size of the array exceeds its capacity. If it does, it returns -1, indicating that the insertion cannot be performed.
+
+    for (int i = size-1; i >=index; i--)
+    {
+        arr[i+1] = arr[i];
+    }
+
+If the capacity allows for insertion, this code shifts the elements in the array to make room for the new element at the specified index.
+
+    arr[index] = element;
+    return 1;
+
+After creating space, this code inserts the `element` at the specified `index` and returns 1 to indicate successful insertion.
+
+int main(){
+    int arr[100] = {7, 8, 12, 27, 88};
+    int size = 5, element = 45, index=1;
+    display(arr, size);
+    indInsertion(arr, size, element, 100, index);
+    size +=1;
+    display(arr, size);
+    return 0;
+}
+
+This is the `main` function where the program starts execution. It initializes an integer array `arr`, its size, the element to insert, and the index at which to insert. It then displays the array, calls `indInsertion` to insert an element, updates the size of the array, and displays the modified array. Finally, it returns 0 to indicate successful program execution.
+
+Output:
+The output of this code is as follows:
+
+7 8 12 27 88 
+7 45 8 12 27 88 
+
+The element 45 is successfully inserted at index 1 in the array.
