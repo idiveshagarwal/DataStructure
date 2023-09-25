@@ -1,0 +1,64 @@
+C#include<stdio.h>
+#include<stdlib.h>
+
+These are preprocessor directives that include the necessary header files for input and output operations and dynamic memory allocation.
+
+struct myArray
+{
+    int total_size;
+    int used_size;
+    int *ptr;
+};
+
+This defines a structure called `myArray`, which represents a dynamic array. It contains three members: `total_size` to store the total size of the array, `used_size` to store the number of elements used in the array, and `ptr` which is a pointer to the dynamically allocated array.
+
+void createArray(struct myArray * a, int tSize, int uSize){
+
+This is a function definition for `createArray`. It takes a pointer to a `myArray` structure (`a`), an integer `tSize` representing the total size of the array, and an integer `uSize` representing the number of elements initially used in the array.
+
+    a->total_size = tSize;
+    a->used_size = uSize;
+    a->ptr = (int *)malloc(tSize * sizeof(int));
+
+Inside `createArray`, this code initializes the `total_size` and `used_size` members of the `myArray` structure and dynamically allocates memory for the array pointed to by `ptr`.
+
+void show(struct myArray *a){
+
+This is a function definition for `show`. It takes a pointer to a `myArray` structure (`a`) as a parameter.
+
+    for (int i = 0; i < a->used_size; i++)
+    {
+        printf("%d\n", (a->ptr)[i]);
+    }
+}
+
+Inside `show`, this code prints the elements of the dynamic array pointed to by `ptr`.
+
+void setVal(struct myArray *a){
+
+This is a function definition for `setVal`. It takes a pointer to a `myArray` structure (`a`) as a parameter.
+
+    int n;
+    for (int i = 0; i < a->used_size; i++)
+    {
+        printf("Enter element %d", i);
+        scanf("%d", &n);
+        (a->ptr)[i] = n;
+    }
+}
+
+Inside `setVal`, this code prompts the user to input values for each element in the dynamic array and stores those values in the array.
+
+int main(){
+    struct myArray marks;
+    createArray(&marks, 10, 2);
+    printf("We are running setVal now\n");
+    setVal(&marks);
+
+    printf("We are running show now\n");
+    show(&marks);
+
+    return 0;
+}
+
+This is the `main` function where the program starts execution. It declares a `myArray` structure called `marks`, calls `createArray` to initialize it, then calls `setVal` to input values for the elements and `show` to display the elements. Finally, it returns 0 to indicate successful program execution.
