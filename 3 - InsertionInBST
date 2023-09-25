@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<stdlib.h> // Added for 'malloc' function
+
+struct node {
+    int data;
+    struct node* left;
+    struct node* right;
+};
+
+struct node* createNode(int data) {
+    struct node *n; // Creating a node pointer
+    n = (struct node *) malloc(sizeof(struct node)); // Allocating memory in the heap
+    n->data = data; // Setting the data
+    n->left = NULL; // Setting the left child to NULL
+    n->right = NULL; // Setting the right child to NULL
+    return n; // Finally returning the created node
+}
+
+void insert(struct node *root, int key) {
+    struct node *prev = NULL;
+    while (root != NULL) {
+        prev = root;
+        if (key == root->data) {
+            printf("Cannot insert %d, already in BST", key);
+            return;
+        } else if (key < root->data) {
+            root = root->left;
+        } else {
+            root = root->right;
+        }
+    }
+    struct node* new_node = createNode(key);
+    if (key < prev->data) {
+        prev->left = new_node;
+    } else {
+        prev->right = new_node;
+    }
+}
+
+int main() {
+    // Constructing the root node - Using Function (Recommended)
+    struct node *p = createNode(5);
+    struct node *p1 = createNode(3);
+    struct node *p2 = createNode(6);
+    struct node *p3 = createNode(1);
+    struct node *p4 = createNode(4);
+
+    // Finally, the tree looks like this:
+    //      5
+    //     / \
+    //    3   6
+    //   / \
+    //  1   4  
+
+    // Linking the root node with left and right children
+    p->left = p1;
+    p->right = p2;
+    p1->left = p3;
+    p1->right = p4;
+
+    insert(p, 16);
+    printf("%d\n", p->right->right->data); // Output: 16
+
+    insert(p, 7);
+    printf("%d\n", p->right->right->data); // Output: 16
+
+    return 0;
+}
+```
+
+Description of each function and line:
+
+1. `struct node`: Defines a structure for a binary tree node with an integer data value and left and right child pointers.
+2. `createNode(int data)`: Creates and initializes a new node with the given data value and returns a pointer to it.
+3. `insert(struct node *root, int key)`: Inserts a new node with the key value into the binary search tree (BST) rooted at `root`. It traverses the tree to find the appropriate position for insertion.
+4. `int main()`: The main function where the binary search tree is constructed and insertion operations are performed.
+
+The output of the program is 16 because the `insert` function inserts a new node with the key value 16 into the tree, and the second `printf` statement prints the data of the rightmost node in the tree, which is 16.
