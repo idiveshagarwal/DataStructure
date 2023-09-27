@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+// Function to display the elements of an array
+void display(int arr[], int n)
+{
+    // Code for Traversal: Loop through the array and print each element
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+// Function to perform element deletion at a specified index
+void indDeletion(int arr[], int size, int index)
+{
+    // Code for Deletion: Shift elements to the left starting from the specified index
+    for (int i = index; i < size - 1; i++)
+    {
+        arr[i] = arr[i + 1];
+    }
+}
+
+int main()
+{
+    int arr[100] = {7, 8, 12, 27, 88}; // Declare an array with initial values
+    int size = 5, element = 45, index = 0; // Declare variables for size, element, and index
+
+    display(arr, size); // Call the display function to show the initial array
+    indDeletion(arr, size, index); // Call the indDeletion function to remove an element
+    size -= 1; // Decrease the size of the array to account for the deleted element
+    display(arr, size); // Call the display function again to show the modified array
+
+    return 0; // Return 0 to indicate successful execution
+}
