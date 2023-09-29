@@ -1,0 +1,7 @@
+// Definition of a structure named Node
+struct Node {
+    int data;              // Line 3: Integer variable to store data in the node
+    struct Node *next;     // Line 4: Pointer to the next Node, creating a self-referencing structure
+};
+
+This code defines a structure named Node, which represents a node in a linked list. The structure has two members: data, which stores the data of the node, and next, which is a pointer to the next node in the linked list, creating a self-referencing structure.
