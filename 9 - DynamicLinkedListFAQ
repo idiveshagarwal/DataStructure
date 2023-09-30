@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Definition of a structure named Node
+struct Node
+{
+    int data;              // Line 9: Integer variable to store data in the node
+    struct Node *next;     // Line 10: Pointer to the next Node, creating a linked list
+};
+
+// Function to traverse and print elements of a linked list
+// Parameters: ptr - Pointer to the head of the linked list
+void linkedListTraversal(struct Node *ptr)
+{
+    // Loop through the linked list until the end is reached (NULL)
+    while (ptr != NULL)
+    {
+        // Print the data of the current node
+        printf("Element: %d\n", ptr->data);
+        
+        // Move the pointer to the next node in the linked list
+        ptr = ptr->next;
+    }
+}
+
+// Main function
+int main()
+{
+    struct Node *head;     // Line 23: Pointer to the head of the linked list
+    struct Node *second;   // Line 24: Pointer to the second node
+    struct Node *third;    // Line 25: Pointer to the third node
+    struct Node *fourth;   // Line 26: Pointer to the fourth node
+
+    // Allocate memory for nodes in the linked list in Heap
+    head = (struct Node *)malloc(sizeof(struct Node));    // Line 29: Allocate memory for the head node
+    second = (struct Node *)malloc(sizeof(struct Node));  // Line 30: Allocate memory for the second node
+    third = (struct Node *)malloc(sizeof(struct Node));   // Line 31: Allocate memory for the third node
+    fourth = (struct Node *)malloc(sizeof(struct Node));  // Line 32: Allocate memory for the fourth node
+
+    // Link nodes by assigning data and updating next pointers
+
+    // Link first and second nodes
+    head->data = 7;        // Line 37: Assign data to the head node
+    head->next = second;   // Line 38: Set the next pointer of the head node to the second node
+
+    // Link second and third nodes
+    second->data = 11;     // Line 41: Assign data to the second node
+    second->next = third;  // Line 42: Set the next pointer of the second node to the third node
+
+    // Link third and fourth nodes
+    third->data = 41;      // Line 45: Assign data to the third node
+    third->next = fourth;  // Line 46: Set the next pointer of the third node to the fourth node
+
+    // Terminate the list at the fourth node
+    fourth->data = 66;     // Line 49: Assign data to the fourth node
+    fourth->next = NULL;   // Line 50: Set the next pointer of the fourth node to NULL
+
+    // Call function to traverse and print the linked list
+    linkedListTraversal(head);
+
+    return 0;
+}
+
+This code demonstrates the creation of a dynamic linked list with four nodes. Memory for each node is allocated on the heap using malloc(). The linked list is then traversed and printed using the linkedListTraversal function.
