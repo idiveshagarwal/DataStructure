@@ -1,0 +1,114 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+// Define a structure for a node in a linked list
+struct Node{
+    int data;           // Data stored in the node
+    struct Node *next;  // Pointer to the next node in the list
+};
+
+// Function to traverse the linked list and print its elements
+void linkedListTraversal(struct Node *ptr)
+{
+    while (ptr != NULL)
+    {
+        printf("Element: %d\n", ptr->data);
+        ptr = ptr->next;
+    }
+}
+
+// Function to insert a node at the beginning of the linked list
+struct Node * insertAtFirst(struct Node *head, int data){
+    struct Node * ptr = (struct Node *) malloc(sizeof(struct Node)); // Allocate memory for the new node
+    ptr->data = data; // Set the data of the new node
+
+    ptr->next = head; // Point the new node to the current head
+    return ptr; // Return the new head
+}
+
+// Function to insert a node at a specific index in the linked list
+struct Node * insertAtIndex(struct Node *head, int data, int index){
+    struct Node * ptr = (struct Node *) malloc(sizeof(struct Node)); // Allocate memory for the new node
+    struct Node * p = head; // Create a pointer to traverse the list
+    int i = 0;
+
+    while (i != index - 1) // Traverse until the node before the desired index
+    {
+        p = p->next;
+        i++;
+    }
+    ptr->data = data; // Set the data of the new node
+    ptr->next = p->next; // Point the new node to the next node
+    p->next = ptr; // Point the previous node to the new node
+    return head; // Return the head of the list
+}
+
+// Function to insert a node at the end of the linked list
+struct Node * insertAtEnd(struct Node *head, int data){
+    struct Node * ptr = (struct Node *) malloc(sizeof(struct Node)); // Allocate memory for the new node
+    ptr->data = data; // Set the data of the new node
+    struct Node * p = head; // Create a pointer to traverse the list
+
+    while(p->next != NULL){ // Traverse until the last node
+        p = p->next;
+    }
+    p->next = ptr; // Point the last node to the new node
+    ptr->next = NULL; // Set the next of the new node to NULL, indicating the end of the list
+    return head; // Return the head of the list
+}
+
+// Function to insert a node after a given node in the linked list
+struct Node * insertAfterNode(struct Node *head, struct Node *prevNode, int data){
+    struct Node * ptr = (struct Node *) malloc(sizeof(struct Node)); // Allocate memory for the new node
+    ptr->data = data; // Set the data of the new node
+
+    ptr->next = prevNode->next; // Point the new node to the next node of the previous node
+    prevNode->next = ptr; // Point the previous node to the new node
+    return head; // Return the head of the list
+}
+
+// Main function
+int main(){
+    struct Node *head; // Declare a pointer to the head of the linked list
+    struct Node *second; // Declare a pointer to the second node
+    struct Node *third; // Declare a pointer to the third node
+    struct Node *fourth; // Declare a pointer to the fourth node
+
+    // Allocate memory for nodes in the linked list in the heap
+    head = (struct Node *)malloc(sizeof(struct Node)); // Allocate memory for the head node
+    second = (struct Node *)malloc(sizeof(struct Node)); // Allocate memory for the second node
+    third = (struct Node *)malloc(sizeof(struct Node)); // Allocate memory for the third node
+    fourth = (struct Node *)malloc(sizeof(struct Node)); // Allocate memory for the fourth node
+
+    // Link the nodes together
+    head->data = 7; // Set data for the head node
+    head->next = second; // Link the head node to the second node
+
+    second->data = 11; // Set data for the second node
+    second->next = third; // Link the second node to the third node
+
+    third->data = 41; // Set data for the third node
+    third->next = fourth; // Link the third node to the fourth node
+
+    fourth->data = 66; // Set data for the fourth node
+    fourth->next = NULL; // Mark the end of the list
+
+    printf("Linked list before insertion\n");
+    linkedListTraversal(head); // Print the linked list before insertion
+
+    // Perform insertion operations
+    // head = insertAtFirst(head, 56);
+    // head = insertAtIndex(head, 56, 1);
+    // head = insertAtEnd(head, 56);
+    head = insertAfterNode(head, third, 45);
+
+    printf("\nLinked list after insertion\n");
+    linkedListTraversal(head); // Print the linked list after insertion
+
+    return 0; // Return 0 to indicate successful termination
+}
+
+
+This code demonstrates different operations on a linked list such as inserting nodes at the beginning, at a specific index, at the end, and after a given node. Each operation is implemented as a separate function for modularity and ease of understanding. The main function initializes a linked list with four nodes, performs insertion operations, and displays the linked list before and after the insertion.
+
+
