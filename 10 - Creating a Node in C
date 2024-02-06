@@ -1,0 +1,39 @@
+#include <stdlib.h>
+
+// Define a structure named Node
+struct Node {
+    int data; // Data member of the Node structure
+    struct Node *next; // Pointer to the next Node structure
+};
+
+int main() {
+    // Declare a pointer named ptr of type struct Node* and allocate memory for a Node structure
+    struct Node *ptr = (struct Node*) malloc (sizeof (struct Node));
+
+    // Assign the value 9 to the data member of the Node structure that ptr points to
+    ptr -> data = 9;
+
+    return 0;
+}
+
+Explanation:
+
+#include <stdlib.h>: Including the standard library header file stdlib.h which contains functions like malloc for dynamic memory allocation.
+
+struct Node {: Defines a structure named Node.
+
+int data;: Declares a member variable data of type int inside the Node structure, which will hold the data.
+
+struct Node *next;: Declares a pointer variable next of type struct Node* inside the Node structure, which will point to the next node in a linked list.
+
+};: Ends the definition of the Node structure.
+
+int main() {: Starts the definition of the main function.
+
+struct Node *ptr = (struct Node*) malloc (sizeof (struct Node));: Declares a pointer variable ptr of type struct Node*, allocates memory for a Node structure using malloc, and assigns the address of the allocated memory to ptr.
+
+ptr -> data = 9;: Accesses the data member of the Node structure that ptr points to and assigns the value 9 to it.
+
+return 0;: Returns 0 to indicate successful execution of the program.
+
+}: Ends the definition of the main function.
