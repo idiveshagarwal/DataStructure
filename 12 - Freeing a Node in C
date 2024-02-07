@@ -1,0 +1,6 @@
+// Free the memory allocated to the node pointed to by ptr
+free(ptr);
+
+Explanation:
+
+free(ptr);: This line deallocates the memory previously allocated for the node pointed to by the pointer ptr. It makes that memory available for future allocations but does not change the value of ptr itself.
